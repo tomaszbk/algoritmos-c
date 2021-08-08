@@ -8,7 +8,7 @@
 //pueden no haber mesas libres
 //cndo termina dia: total de ganancias al restoran
 //ganancias totales por mesa y porcentaje que representa sobre total
-
+increible
 int gasto_total = 0;
 
 
