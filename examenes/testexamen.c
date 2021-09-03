@@ -28,12 +28,11 @@ struct moto{
     int precio;
     int cant_vendida;
 };
-listado[20][3]; 
+
+int listado[2][3]; 
 //columnas: codigo, cant a reponer, importe de reposicion
-//el codigo ahora es var porque no si o si coincidira con el index
 
-
-struct moto motos[20];
+struct moto motos[2];
 
 int venta(){    // cada vez q se vende producto
     int z;      //el codigo de la moto elegida + 1, porq se elige del 1 al 20 y los index son del 0 al 19
@@ -44,7 +43,7 @@ int venta(){    // cada vez q se vende producto
         printf("\nque moto desea comprar? elija un codigo del 1 al 20: ");
         scanf("%d",&z);
         if(motos[z - 1].stock == 0){  //asi, si se elige codigo uno, se checkea index 0
-            printf("\nno hay stock de esa moto")
+            printf("\nno hay stock de esa moto");
             control = 0;
             }
     }
@@ -58,14 +57,9 @@ int venta(){    // cada vez q se vende producto
         scanf("%d", &compradas);
     }
     printf("\nticket: "); //código/modelo/ Cantidad vendida /Precio total
-    printf("\nproducto codigo %d,\n
-            modelo %s,\n
-            cantidad: %d,\n
-            precio total = %d.\n
-            Muchas gracias", z + 1, motos[z -1].modelo, compradas, motos[z -1].precio * compradas);
-    motos[z -1].stock -=1;
+    printf("\n-producto codigo %d,\n-modelo %s,\n-cantidad: %d,\n-precio total = %d.\n Muchas gracias", z + 1, motos[z -1].modelo, compradas, motos[z -1].precio * compradas);
+    motos[z -1].stock -= compradas;
     motos[z -1].cant_vendida += compradas;
-
     return 0;
 }
 
@@ -73,7 +67,7 @@ int fin(){  //cndo finaliza dia. venta total, codigo y cant venta de c modelo, l
     int venta_total = 0; 
     int reposicion = 0;
     printf("\nha finalizado el dia!");
-    for(int i = 0; i<20,i++){
+    for(int i = 0; i<2;i++){
         venta_total += motos[i].cant_vendida * motos[i].precio;
         if(motos[i].stock < motos[i].stock_min){ //código,  cantidad a reponer(50 – stock), importe de reposición (cantidad a reponer * precio)
             listado[i][0] =i + 1;
@@ -84,18 +78,22 @@ int fin(){  //cndo finaliza dia. venta total, codigo y cant venta de c modelo, l
         printf("\nel producto de codigo %d vendio %d unidades",i + 1, motos[i].cant_vendida); //Imprimir código y cantidad vendida de  cada  modelo
     }
     printf("\nfueron agregados al listado los productos que requerian restock");
-    printf("\n cantidad total recaudada: %d", venta_total);
-    
-
+    printf("\n cantidad total recaudada: $%d", venta_total);
+    printf("\nel precio de la reposicion es $%d", reposicion);
+    return 0;
 }
 
 int main(){
-    int x = 1;
-        for(int i = 0; i<20;i++){    // modelo, stock, stock_minimo y el precio. Inicializo datos
+        int x = 1;
+        for(int i = 0; i<2;i++){    // modelo, stock, stock_minimo y el precio. Inicializo datos
             printf("ingrese modelo de la moto codigo %d : ", i + 1);
             scanf("%s",&motos[i].modelo);
-            printf("\ningrese stock actual: ");
+            printf("\ningrese stock actual(no puede ser mayor a 50): "); //no puede ser > a 50 porq stock a pedir = 50 - stock y daria num negativo
             scanf("%d",&motos[i].stock);
+            while(motos[i].stock > 50){  //while para asegurarme que stock < a 50
+                printf("\ningrese stock actual(no puede ser mayor a 50!): ");
+                scanf("%d",&motos[i].stock);
+            }
             printf("\ningrese stock minimo: ");
             scanf("%d",&motos[i].stock_min);
             printf("\ningrese precio: ");
@@ -103,7 +101,7 @@ int main(){
             motos[i].cant_vendida = 0;   
         }
         while(x != 0){
-            printf("\n 0- terminar dia\n1- Vender una moto");
+            printf("\n 0- terminar dia\n1- Vender una moto ");
             scanf("%d", &x);
             if(x == 1){
                 venta();
@@ -112,7 +110,5 @@ int main(){
                 fin();
             }
         }
-
-
     return 0;
 }
