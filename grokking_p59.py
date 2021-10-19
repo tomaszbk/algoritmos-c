@@ -40,10 +40,10 @@ def binary_search(valor, lista):
     if lista[num_medio] == valor:
         return num_medio
    
-    if lista[num_medio] > valor:
+    elif lista[num_medio] > valor:
         return binary_search(valor, lista[0:num_medio])
         
-    if lista[num_medio] < valor:
+    elif lista[num_medio] < valor:
         return num_medio + binary_search(valor, lista[num_medio:])
         
 

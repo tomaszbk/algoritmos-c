@@ -1,0 +1,42 @@
+1) Indicar el valor de las máscaras y operaciones lógicas necesarias para realizar las siguientes 
+modificaciones sobre el número binario 10011100:
+(a) poner en '1' los 4 bits más significativos;
+(b) poner en '0' los 4 bits menos significativos;
+(c) invertir todos los bits
+
+a- 
+org 1000h
+; variables 
+NUM0 DB 10101101b  ;ALTO
+NUM1 db 11110000b
+
+
+org 2000h
+; código
+mov ax, NUM0
+mov bx, NUM1
+OR ax,bx
+
+hlt
+end
+
+b- lo mismo pero con and
+
+C- 11111111 y XOR
+
+Indicar el estado de los registros AX, BX y el registro de estado F luego de ejecutar cada 
+instrucción (para el registro F use como referencia el diag. 2):
+(a) Para: ADD AX, BX
+ ADC AX, BX
+ AND AX, BX
+ XOR AX, BX sabiendo que AX = 2Bh y BX = F8h.
+
+(b) Idem al ítem anterior, sabiendo que AX = 66h y BX = 61h.
+(c) Para: NEG AX sabiendo que AX = 66h.
+(d) Dados AX = 5A78h y BX = A587h, determinar los resultados de:
+AND AX, BX
+NEG AX
+OR AX, BX
+XOR AX, BX
+
+a) 
