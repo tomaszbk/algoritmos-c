@@ -40,18 +40,18 @@ struct lista{
 
 void insertar(struct lista **p);
 void generar_lista(struct lista **p, struct listab **a);
-void porcentaje(struct lista **p, float *porcentaje_interior, int *interior, int *exterior);
+void porcentaje(struct lista **p, float *porcentaje_interior, float *interior, float *exterior);
 void insertarb(struct listab **p, char nombre[20], int precio);
-
+void imprimir_lista(struct listab **p);
 
 
 int main()
 {
     int z=1;
-    float porcentaje_interior;
-    float porcentaje_exterior;
-    int interior;
-    int exterior;
+    float porcentaje_interior=0;
+    float porcentaje_exterior=0;
+    float interior;
+    float exterior;
     struct lista *p = NULL;
     struct listab *arbusto = NULL;
     while(z > 0){
@@ -61,8 +61,8 @@ int main()
                 case 0:
                     porcentaje(&p, &porcentaje_interior, &interior, &exterior);
                     porcentaje_exterior = 1 - porcentaje_interior;
-                    printf("por interior %d, por exterior %d", porcentaje_interior,porcentaje_exterior);
-                    printf("muchas gracias saludos");
+                    printf("por interior %f, por exterior %f", porcentaje_interior, porcentaje_exterior);
+                    printf("\nmuchas gracias saludos");
                     break;
                 case 1:
                     insertar(&p);
@@ -70,6 +70,7 @@ int main()
                 case 2:
                     z = 2;
                     generar_lista(&p, &arbusto);
+                    imprimir_lista(&arbusto);
                     break;
                 }
     }
@@ -115,28 +116,43 @@ void generar_lista(struct lista **p, struct listab **a){
     }
 }
 
-void porcentaje(struct lista **p, float *porcentaje_interior, int *interior, int *exterior){
-    struct lista *point = *p;
-    if(point == NULL){
-        *porcentaje_interior = *interior / (*interior + *exterior);
-        return;
-    }
-    else{
-        if(point->planta.interior ==0){    //interior 1 si, 0 es exterior
+void porcentaje(struct lista **p, float *porcentaje_interior, float *interior, float *exterior){
+    struct lista *pointer = *p;
+    printf("exterior: %f", *exterior);
+    // if(pointer == NULL){
+    //     *porcentaje_interior = *interior / (*interior + *exterior);
+    //     return;
+    // }
+    // else{
+    //     if(pointer->planta.interior ==0){    //interior 1 si, 0 es exterior
+    //         *exterior +=1;
+    //     }
+    //     else{
+    //         *interior +=1;
+    //     }
+        
+    //     porcentaje(pointer->sig, porcentaje_interior, interior,exterior);
+    // }
+    while(pointer != NULL){
+        if(pointer->planta.interior ==0){    //interior 1 si, 0 es exterior
             *exterior +=1;
+            printf("\nse suma exterior");
         }
-        else{
+        else if (pointer->planta.interior ==1){
             *interior +=1;
+            printf("\nse suma interior");
         }
-        point = point -> sig;
-        porcentaje(point, porcentaje_interior, interior,exterior);
+        pointer = pointer ->sig;
     }
+    printf("interior: %f ", *interior);
+    printf("\nexterior: %f", *exterior);
+    *porcentaje_interior = *interior / (*interior + *exterior);
 }
 
 void imprimir_lista(struct listab **p){
     struct listab *point = *p;
-    while(point != NULL){
-        printf("\nLista de arbustos de exterior");
+    printf("\nLista de arbustos de exterior");
+    while(point != NULL){ 
         printf("\nNombre %s, precio %d", point->dato.nombre, point->dato.precio);
         point = point->sig;
     }
