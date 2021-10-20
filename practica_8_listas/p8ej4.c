@@ -15,8 +15,9 @@
 //#include <string.h>
 #include <stdlib.h>
 
+
 struct departamento{
-    char ubicacion[20];
+    char ubicacion[30];
     int cant_dormitorios;
     int piso;
     int cochera; //0 no, 1 si
@@ -30,6 +31,7 @@ struct lista{
     struct lista *sig;
 };
 void insertar_ordenado(struct lista **p);
+void informe(struct lista **p);
 
 int main()
 {
@@ -38,18 +40,29 @@ int main()
     while(z > 0){
         printf("\ndesea agregar dpto(1), imprimir(2) o finalizar(0)?\n");
         scanf("%d",&z);
-        switch
+        switch (z){
+                case 0:
+                    printf("muchas gracias saludos");
+                    break;
+                case 1:
+                    insertar_ordenado(&p);
+                    break;
+                case 2:
+                    z = 2;
+                    informe(&p);
+                    break;
+                }
     }
     return 0;
 }
 
-
 void insertar_ordenado(struct lista **p){       //ordenar por cant_dormitorios de mayor a menor
     struct lista *nuevo = malloc(sizeof(struct lista));
-    struct lista *pointer = *p;
-    struct lista *anterior;
+    struct lista *actual = *p;
+    struct lista *anterior = actual;
     printf("\n ubicacion: ");
-    scanf("%s", nuevo -> dpto.ubicacion);
+    scanf(" %[^\n]s", nuevo -> dpto.ubicacion);
+
     printf("\n cant dormitorios: ");
     scanf("%d", &nuevo -> dpto.cant_dormitorios);
     printf("\n piso: ");
@@ -66,16 +79,21 @@ void insertar_ordenado(struct lista **p){       //ordenar por cant_dormitorios d
     if(*p == NULL){
         *p = nuevo;
         nuevo ->sig = NULL;
+        return;
     }
     else{
-
-        while(nuevo -> dpto.cant_dormitorios < pointer -> dpto.cant_dormitorios){
-            anterior = nuevo;
-            pointer = pointer -> sig;
+        while(actual != NULL && nuevo -> dpto.cant_dormitorios < actual -> dpto.cant_dormitorios){
+            anterior = actual;
+            actual = actual -> sig;
         }
+    if(anterior == actual){
+        *p = nuevo;
+    }
+    else{
+        anterior-> sig = nuevo;
+    }
 
-        anterior -> sig = nuevo;
-        nuevo -> sig = pointer;
+        nuevo -> sig = actual;
     }
 }
 
