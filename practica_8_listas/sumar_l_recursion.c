@@ -8,7 +8,7 @@ struct lista{
 };
 
 void insertar(struct lista **p, int x);
-void sumar_recursion(struct lista **p, int *resultado){
+void sumar_recursion(struct lista **p, int *resultado);
 
 int main()
 {
@@ -41,4 +41,3 @@ void sumar_recursion(struct lista **p, int *resultado){
     }
 }
 
-}
