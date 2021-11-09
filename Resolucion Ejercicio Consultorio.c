@@ -384,9 +384,3 @@ void contarRecursivo(struct Lista *lista, int *total){
         *total = *total + 1;
     }
 }
-
-
-
-
-
-

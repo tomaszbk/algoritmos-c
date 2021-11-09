@@ -4,9 +4,7 @@
 
 int main()
 {
-   float x =10;
-   int z = 3;
-   printf("%f",x/z);
+
     return 0;
 }
 

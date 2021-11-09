@@ -307,7 +307,7 @@ if (lista ->tamano == 0){
 	
 	printf ("2. Adicion al final de la lista\n");
 	
-	printf ("3. Adicion después de la posición indicada\n");
+	printf ("3. Adicion despuï¿½s de la posiciï¿½n indicada\n");
 	
 	printf ("4. Supresion al inicio de la lista\n");
 	
@@ -375,8 +375,7 @@ switch (eleccion){
 
 	case 1:
 	
-		printf ("INGRESE UN ELEMENTO : ");
-		
+		printf ("INGRESE UN ELEMENTO : ");		
 		scanf ("%s", nom);
 		
 		getchar ();
@@ -399,8 +398,7 @@ switch (eleccion){
 	
 	case 2:
 	
-		printf ("INGRESE UN ELEMENTO: ");
-		
+		printf ("INGRESE UN ELEMENTO: ");	
 		scanf ("%s", nom);
 		
 		getchar ();
@@ -417,16 +415,14 @@ switch (eleccion){
 	
 	case 3:
 	
-		printf ("INGRESE UN ELEMENTO: ");
-		
+		printf ("INGRESE UN ELEMENTO: ");		
 		scanf ("%s", nom);
 		
 		getchar ();
 		
 		do{
 		
-		printf ("INGRESE UNA POSICION: ");
-		
+		printf ("INGRESE UNA POSICION: ");	
 		scanf ("%d", &pos);
 		
 		}
@@ -439,10 +435,8 @@ switch (eleccion){
 		
 		k = 1;
 		
-		printf("-----------------------------------------------\n");
-		
-		printf("/!\\ERROR DE INSERCION DE ELEMENTOS EN LA LISTA/!\\\n");
-		
+		printf("-----------------------------------------------\n");		
+		printf("/!\\ERROR DE INSERCION DE ELEMENTOS EN LA LISTA/!\\\n");		
 		printf("-----------------------------------------------\n");
 		
 		break;
@@ -524,7 +518,6 @@ switch (eleccion){
 	}
 
 }
-
 
 //FIN MENU
 

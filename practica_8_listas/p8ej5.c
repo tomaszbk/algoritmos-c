@@ -119,20 +119,7 @@ void generar_lista(struct lista **p, struct listab **a){
 void porcentaje(struct lista **p, float *porcentaje_interior, float *interior, float *exterior){
     struct lista *pointer = *p;
     printf("exterior: %f", *exterior);
-    // if(pointer == NULL){
-    //     *porcentaje_interior = *interior / (*interior + *exterior);
-    //     return;
-    // }
-    // else{
-    //     if(pointer->planta.interior ==0){    //interior 1 si, 0 es exterior
-    //         *exterior +=1;
-    //     }
-    //     else{
-    //         *interior +=1;
-    //     }
-        
-    //     porcentaje(pointer->sig, porcentaje_interior, interior,exterior);
-    // }
+
     while(pointer != NULL){
         if(pointer->planta.interior ==0){    //interior 1 si, 0 es exterior
             *exterior +=1;

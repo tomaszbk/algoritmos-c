@@ -8,17 +8,18 @@ struct lista{
 };
 
 void insertar(struct lista **p, int x);
-void sumar_recursion(struct lista **p, int *resultado);
+int sumar_recursion(struct lista *p);
 
 int main()
 {
-    int resultado=0;
+    
     struct lista *l = NULL;
     insertar(&l, 50);
     insertar(&l, 75);
     insertar(&l, 4);
     insertar(&l, 110);
     insertar(&l, 20);
+    printf("%d", sumar_recursion(l));
     return 0;
 }
 
@@ -31,13 +32,13 @@ void insertar(struct lista **p, int x){
      *p = nuevo;
 }
 
-void sumar_recursion(struct lista **p, int *resultado){
-    struct lista *pointer = *p;
-    if(pointer -> sig == NULL){
-        return;
+int sumar_recursion(struct lista *p){
+    
+    if(p == NULL){
+        return 0;
     }
     else{
-        *resultado = sumar_recursion(&pointer->sig,resultado) + pointer->num;
+        return sumar_recursion(p->sig) + p->num;
     }
 }
 
