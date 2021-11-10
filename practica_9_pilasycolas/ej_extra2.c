@@ -29,7 +29,6 @@ struct dato_factura{
     char domicilio[30];
     char descripcion_producto[30];
     int precio_total;
-
 };
 
 struct dato_encolado{       //dato cola
@@ -109,9 +108,9 @@ int main()
     imprimir_productos(pproductos);
     printf("\n\n");
     imprimir_cola(pcola);
-    printf("\nlo basic");
+    printf("\n\nCreo la lista factura:\n");
     struct lfactura *pfactura = crear_factura(NULL, pcola.pini, pclientes, pproductos);
-    printf("\nACAA\n");
+
     print_factura(pfactura);
     return 0;
 }
@@ -196,7 +195,7 @@ struct lfactura * crear_factura(struct lfactura *p, struct lcola *pini, struct l
         strcpy(nuevo-> dato.descripcion_producto, producto_actual->dato.descripcion_producto);     
         strcpy(nuevo-> dato.nombre_y_apellido, cliente_actual->dato.nombre_y_apellido);
         strcpy(nuevo-> dato.domicilio, cliente_actual->dato.domicilio);
-        printf("aca bn");
+    
         nuevo -> sig = crear_factura(p, pini->sig, clientes, productos);
 
         printf("\nCuil del comprador: %d\nnombre y apellido: %s\ndomicilio:%s\ndescripcion del producto:%s\nprecio total:%d\n\n",nuevo->dato.cuil,nuevo->dato.nombre_y_apellido,nuevo->dato.domicilio,nuevo->dato.descripcion_producto,nuevo->dato.precio_total);
@@ -222,13 +221,13 @@ struct lproductos * busqueda_producto(struct lproductos *p, int codigo_producto)
     struct lproductos *point = p;
     while( point->dato.codigo_producto != codigo_producto){
         point = point->sig;
-    }
-    
+    }   
     return point;
 }
 
 void print_factura(struct lfactura *p){
     struct lfactura *point = p;
+        printf("\nImprimir nombres facturas(nueva lista hecha):");
     while(point != NULL){
         printf("\n%s",point->dato.nombre_y_apellido);
         point = point->sig;
