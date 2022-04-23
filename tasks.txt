@@ -1,0 +1,4 @@
+hacer nuevo .c con todos procedimientos listas
+nuevo .c con todos de cola
+nuevo .c con todos de pila
+
