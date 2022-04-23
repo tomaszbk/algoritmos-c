@@ -1,7 +1,6 @@
 #include <stdio.h>
 //Nombre: Tomas Zubik 
 //Com S12
-//Dni: 44 356 195
 // En una fabrica de motos se hay 20 modelos de motos diferentes, con código de 1 a 20. Datos de motos:
 
 // modelo, stock, stock_minimo y el precio. 

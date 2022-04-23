@@ -1,6 +1,7 @@
 #include <stdio.h>
 //#include <string.h>
 #include <stdlib.h>
+
 struct examen{
     int legajo;
     int nota;
@@ -31,10 +32,6 @@ int main()
     agregar_final(&l,al1);
     imprimir_elementos(&l);
 
-    int z = 1;
-    // insertar_ordenado(&l, al1, z);
-    // printf("\n\n");
-    // imprimir_elementos(&l);
     return 0;
 }
 
